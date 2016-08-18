@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title></title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
-    <script type="text/javascript" src="js/controllers.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
     <script type="text/javascript" src="js/services.js"></script>
@@ -15,14 +14,20 @@
       <div class="container">
         <div class="block instructions">
           <h3> Enter sides a and b of the triangle,
-               and we'll calculate the hypotenuse. </h3>
+               and we'll calculate the hypotenuse.
+						 </h3>
+					<select  ng-model="shape">
+						<option value='radi'>Circle</option>
+						<option value='hyp'>Triangle</option>
+						<option value='rom'>Rhombus</option>
+					</select>
         </div>
-        <table border=1>
+        <table border=1 ng-show="shape === 'hyp'">
           <tr>
             <td rowspan="2"> Side A: <input type="number" ng-model="sideA"></td>
             <td class="hypot">
 
-              <img src="images/tri.png" />
+              <img ng-src="images/tri.png" />
               <span>hypotenuse:  {{hypotenuse}}</span>
             </td>
 
@@ -35,6 +40,39 @@
             <td colspan="2"><button type="button" ng-click="calculate()">CALCULATE!</button></td>
           </tr>
         <table>
+        <table border=1 ng-show="shape === 'radi'">
+          <tr>
+            <td rowspan="2"> Radius: <input type="number" ng-model="half"></td>
+            <td class="hypot">
+
+              <img ng-src="images/CR210.jpg" />
+              <span>Area:  {{area}}</span>
+            </td>
+
+          </tr>
+
+          <tr class="button_row">
+            <td colspan="2"><button type="button" ng-click="calculate2()">CALCULATE!</button></td>
+          </tr>
+        <table>
+					<table border=1 ng-show="shape === 'rom'">
+						<tr>
+							<td rowspan="2"> Side A: <input type="number" ng-model="sideAA"></td>
+							<td class="hypot">
+
+								<img ng-src="images/0001.png" />
+								<span>Area:  {{areaRom}}</span>
+							</td>
+
+						</tr>
+						<tr>
+
+							<td> Side B: <input type="number" ng-model="sideBB"> </td>
+						</tr>
+						<tr class="button_row">
+							<td colspan="2"><button type="button" ng-click="calculateRom()">CALCULATE!</button></td>
+						</tr>
+					<table>
 
       </div>
       <footer></footer>
